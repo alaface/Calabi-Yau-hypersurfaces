@@ -76,6 +76,9 @@ Deg2Pairs_NoF1 := [];
 Deg2Pairs_WithF1 := [];
 F1Only := [];
 
+/* Indices satisfying Algorithm 1 */
+Alg1Indices := [];
+
 for i in [6..147] do
     P := FanoP(i);
 
@@ -99,7 +102,27 @@ for i in [6..147] do
     end if;
 end for;
 
+/* Build the union of indices already classified above */
+Classified := Set([u[1] : u in Thm1Hits])
+              join Set(Deg2Pairs_NoF1)
+              join Set(F1Only)
+              join Set(Deg2Pairs_WithF1);
+
+/* Apply Algorithm 1 test only to the complementary indices */
+for i in [6..147] do
+    if not (i in Classified) then
+        P := FanoP(i);
+        F := SpanningFan(P);
+        Z := ToricVariety(Rationals(), F);
+        if TestEff(Z, [Eltseq(u) : u in Rays(QuasiEff(P))]) then
+            Append(~Alg1Indices, i);
+        end if;
+    end if;
+end for;
+
+/* Outputs */
 [ [u[1] : u in Thm1Hits | u[2] eq i] : i in [0..4] ];
 Deg2Pairs_NoF1;
 F1Only;
 Deg2Pairs_WithF1;
+Alg1Indices;
