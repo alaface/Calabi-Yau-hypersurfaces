@@ -68,6 +68,7 @@ These lists correspond exactly to the rows of Table 1 in the paper.
 
 Main classification script
 
+```magma
 load "lib-paper.m";
 
 Thm1Hits := [];
