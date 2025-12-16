@@ -62,7 +62,7 @@ For each smooth Fano polytope with index i:
    - the number of primitive degree-2 pairs,
    - the presence or absence of an F1-type configuration.
 
-These lists correspond exactly to the rows of Table 34 in the paper.
+These lists correspond exactly to the rows of Table 1 in the paper.
 
 -------------------------------------------------------------------------------
 
